@@ -1,0 +1,15 @@
+1. Main Porject:
+  <ItemGroup>
+    <ProjectReference Include="../NUMBER_BlazorAudioPlayerLib/BlazorAudioPlayerLib.csproj" />
+  </ItemGroup>
+
+
+2. Register Services:
+    builder.Services.RegisterBlazorAudioPlayerLibServices();
+
+    app.ConfigureBlazorAudioPlayerLib();
+
+Er sucht momentan nach im wwwroot folder des Main Projekts nach den Sounds!
+
+
+

@@ -1,3 +1,18 @@
+  /* === Container ================================= */
+  .container-background {
+    --bs-dark-rgb: 0, 0, 0;
+    --bs-bg-opacity: 0;
+  
+    background: linear-gradient(to bottom, var(--my-main-color-rgb), rgba(0,0,0,0));
+    transition: all 0.5s;
+    opacity: 0.5;
+  }
+
+/* DICKES FUNZT NET */
+  .container-audioplayer * {
+    opacity: 1;
+  }
+
   /* === RoundButton ================================= */
   .round-button {
     position: fixed;

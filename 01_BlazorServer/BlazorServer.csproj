@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="../02_BlazorComponents/BlazorComponents.csproj" />
+    <ProjectReference Include="../12_BlazorAudioPlayerLib/BlazorAudioPlayerLib.csproj" />
   </ItemGroup>
 
 

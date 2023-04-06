@@ -1,3 +1,4 @@
+using BlazorAudioPlayerLib.Module;
 using BlazorComponents.Module;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
@@ -9,6 +10,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
 builder.Services.RegisterBlazorComponentsServices();
+builder.Services.RegisterBlazorAudioPlayerLibServices();
 
 var app = builder.Build();
 
