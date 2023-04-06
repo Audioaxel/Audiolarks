@@ -23,7 +23,6 @@ namespace BlazorComponents.Services.ScollInfo
         public void JsOnScroll(int yValue)
         {
             YValue = yValue;
-            Console.WriteLine("ScrollInfoService.OnScroll " + yValue);
             OnScroll?.Invoke(this, yValue);
         }
     }

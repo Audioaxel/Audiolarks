@@ -33,7 +33,7 @@ function giveMeRandomInt2(maxIntSize, dotnetInstance) {
 
 window.onscroll = function() {
     if (window.scrollInfoService != null)
-        window.scrollInfoService.invokeMethodAsync('OnScroll', window.pageYOffset);
+        window.scrollInfoService.invokeMethodAsync('OnScroll', parseInt(window.pageYOffset));
 }
 
 window.RegisterScrollInfoService = (scrollInfoService) => {
