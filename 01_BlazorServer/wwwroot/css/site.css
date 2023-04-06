@@ -12,12 +12,6 @@ a, .btn-link {
     color: #0071c1;
 }
 
-.btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
-}
-
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
@@ -66,7 +60,10 @@ a, .btn-link {
 /* My Stuff */
 :root {
     --my-main-color-rgb: rgb(89,39,65);
+    --my-main-hex: #592741;
     --my-main-values-rgb: 89,39,65;
+
+    --my-main-05-hex: #5927417c;
 
     --my-white-color-rgb: rgb(250, 250, 250);
     --my-white-values-rgb: 250, 250, 250;
@@ -87,6 +84,21 @@ a, .btn-link {
     --bs-link-color: #0d6efd;
     --bs-link-hover-color: #0a58ca;
     --bs-link-hover-text-decoration: underline; */
+
+    /* === Button My ================================= */
+    --bs-blue: #5d6d86; /* ändere die Farbe für den Button */
+    --bs-blue-rgb: 93, 109, 134; /* füge den RGB-Wert für die Farbe hinzu */
+    --bs-primary: var(--bs-blue); /* ändere die Hauptfarbe für den Button */
+    --bs-primary-rgb: var(--bs-blue-rgb); /* füge den RGB-Wert für die Hauptfarbe hinzu */
+    --bs-primary-hover: color-yiq(var(--bs-primary-rgb) 12.5%); /* ändere die Farbe des Buttons beim Überfahren mit der Maus */
+    --bs-primary-hover-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15); /* ändere den Schatten des Buttons beim Überfahren mit der Maus */
+    --bs-primary-focus: color-yiq(var(--bs-primary-rgb) 30%); /* ändere die Farbe des Buttons, wenn er im Fokus ist */
+    --bs-primary-focus-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15); /* ändere den Schatten des Buttons, wenn er im Fokus ist */
+    --bs-primary-active: color-yiq(var(--bs-primary-rgb) 25%); /* ändere die Farbe des Buttons, wenn er aktiviert wird */
+    --bs-primary-active-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15); /* ändere den Schatten des Buttons, wenn er aktiviert wird */
+    --bs-primary-disabled: #adb5bd; /* ändere die Farbe des Buttons, wenn er deaktiviert ist */
+    --bs-primary-disabled-shadow: none; /* ändere den Schatten des Buttons, wenn er deaktiviert ist */
+    --bs-primary-outline: 0 0 0 .25rem rgba(93, 109, 134, .5); /* ändere die Farbe der Kontur des Buttons */
 }
 
 /* === Navbar-Dark ================================================ */
@@ -112,5 +124,63 @@ a, .btn-link {
 .text-dark {
     --bs-dark-rgb: var(--my-white-vaues-rgb);
   }
+
+  /* === Buttons ============================================ */
+
+  /* === Test01 =========================== */
+  .my-custom-button {
+    background-color: #5d6d86;
+    border-color: #5d6d86;
+    color: #fff;
+    box-shadow: 0 0.5rem 1rem rgba(93, 109, 134, 0.15);
+  }
+  
+  .my-custom-button:hover {
+    background-color: #495d71;
+    border-color: #495d71;
+    color: #fff;
+  }
+  
+  .my-custom-button:focus {
+    box-shadow: 0 0 0 0.25rem rgba(93, 109, 134, 0.5);
+  }
+
+  /* === Test02 ============================ */
+  .btn-custom {
+    color: #fff;
+    background-color: #592741;
+    border-color: #592741;
+  }
+  
+  .btn-custom:hover {
+    color: #fff;
+    background-color: #4c223b;
+    border-color: #4c223b;
+  }
+  
+  .btn-custom:focus, .btn-custom.focus {
+    box-shadow: 0 0 0 0.25rem rgba(89, 39, 65, 0.5);
+  }
+  
+  .btn-custom.disabled, .btn-custom:disabled {
+    color: #fff;
+    background-color: #592741;
+    border-color: #592741;
+  }
+  
+  .btn-custom:not(:disabled):not(.disabled):active, .btn-custom:not(:disabled):not(.disabled).active,
+  .show > .btn-custom.dropdown-toggle {
+    color: #fff;
+    background-color: #4c223b;
+    border-color: #4c223b;
+  }
+  
+  .btn-custom:not(:disabled):not(.disabled):active:focus, .btn-custom:not(:disabled):not(.disabled).active:focus,
+  .show > .btn-custom.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.25rem rgba(89, 39, 65, 0.5);
+  }
+
+
+  
   
   

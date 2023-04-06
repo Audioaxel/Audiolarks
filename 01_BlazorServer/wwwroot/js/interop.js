@@ -29,7 +29,7 @@ function giveMeRandomInt2(maxIntSize, dotnetInstance) {
 }
 
 
-// ====================
+// === Scroll Shit ===========================
 
 window.onscroll = function() {
     if (window.scrollInfoService != null)
