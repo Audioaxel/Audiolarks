@@ -18,7 +18,7 @@
 .container-services {
   background-image: url('/images/desktop/backgrounds/desktop_bg_main_right.jpg');
   background-attachment: fixed;
-  background-position: center right;
+  /* background-position: center right; */
   background-size: cover;
   margin: auto;
   height: 1000px;
