@@ -1,0 +1,85 @@
+﻿@using BlazorComponents.Services.ScollInfo
+@inject IScrollInfoService scrollInfoService
+@implements IDisposable
+
+<nav class="navbar navbar-expand-md sticky-top bg-body-tertiary navbar-dark @BackgroundColorClass()">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">Audiolarks</a>
+        <button class="navbar-toggler @NavButtonCssClass" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-label="Toggle navigation" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse @NavBarCssClass" id="navbarCollapse" @onclick="ToggleNavMenu">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                        <span class="oi oi-home" aria-hidden="true"></span> Home
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="test">
+                        <span class="oi oi-plus" aria-hidden="true"></span> Test
+                    </NavLink>
+                </li>
+                <li>
+                    <h3>@gibScroll</h3>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+@code {
+    private bool collapseNavMenu = true;
+    private string? NavBarCssClass => collapseNavMenu ? null : "show";
+    private string? NavButtonCssClass => collapseNavMenu ? "collapsed" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+
+        @* =================================== *@
+
+    string gibScroll = "string.Empty";
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        if (firstRender)
+        {
+            @* scrollInfoService.OnScroll += OnScroll; *@
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        scrollInfoService.OnScroll += OnScroll;
+    }
+
+    private void OnScroll(object sender, int yValue)
+    {
+        DoSomething(yValue);
+    }
+
+    public void Dispose()
+    {
+        scrollInfoService.OnScroll -= OnScroll;
+    }
+
+    private void DoSomething(int yValue)
+    {
+        gibScroll = yValue.ToString();
+        ScrollValue = yValue;
+        StateHasChanged();
+    }
+    
+    public int ScrollValue { get; private set; }
+    private string BackgroundColorClass()
+    {
+        if (ScrollValue <= 0)
+            return "bg-dark";
+        
+        return "bg-light";
+    }
+}
+

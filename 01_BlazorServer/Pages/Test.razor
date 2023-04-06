@@ -1,0 +1,133 @@
+﻿@inject IJSRuntime JsRUntime
+
+@using BlazorComponents.Services.ScollInfo
+@inject IScrollInfoService scrollInfoService
+@implements IDisposable
+
+@page "/test"
+
+<PageTitle>Test</PageTitle>
+
+<h3 class="text-primary">Color Test</h3>
+
+<h3>Create Alert</h3>
+<button class="btn btn-success" @onclick="ShowAlert">Show Alert</button>
+
+
+<h3>Create Alert</h3>
+<input @bind="text"/>
+<button class="btn btn-success" @onclick="TextIt">Text It</button>
+<h3>Here is text:<span id="spanId"></span></h3>
+
+<h3>Focus</h3>
+<input @ref="InputToFocus" />
+<button class="btn btn-danger" @onclick="Focus">Focus!</button>
+
+<h3>Give Rnd Int</h3>
+<h3>Here is text:<span id="spanNum"></span></h3>
+<button class="btn btn-info" onclick="giveMeRandomInt(100)" >Gib Nummer</button>
+
+
+<h3>Next Shit</h3>
+<h3>Here is text:<span id="spanNum2"></span></h3>
+<button class="btn btn-info" @onclick="GenerateRandom" >Gib NextShit</button>
+
+
+<h3>@gibScroll</h3>
+<div class="test" style="background-color: @GetColor();">
+    <h3 style="height: 1000px"></h3>
+</div>
+
+@code{
+
+    string text = string.Empty;
+    async Task ShowAlert()
+    {
+        await JsRUntime.InvokeVoidAsync("createAlert");
+    }
+
+    async Task TextIt()
+    {
+        var response = await JsRUntime.InvokeAsync<string>("createPrompt", text);
+        await JsRUntime.InvokeVoidAsync("setTextById", "spanId", response);
+    }
+
+    ElementReference InputToFocus;
+    async Task Focus()
+    {
+        await JsRUntime.InvokeVoidAsync("focusOnElement", InputToFocus);
+    }
+
+    [JSInvokable]
+    public static Task<int> GenerateRandomInt(int maxValue)
+    {
+        return Task.FromResult(new Random().Next(maxValue));
+    }
+
+    [JSInvokable]
+    public Task<int> GenerateRandomInt2(int maxValue)
+    {
+        return Task.FromResult(new Random().Next(maxValue));
+    }
+
+    async Task GenerateRandom()
+    {
+        await JsRUntime.InvokeVoidAsync("giveMeRandomInt2", 100,
+            DotNetObjectReference.Create(this)
+        );
+    }
+
+    @* =================================== *@
+
+    string gibScroll = "string.Empty";
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        if (firstRender)
+        {
+            @* scrollInfoService.OnScroll += OnScroll; *@
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        scrollInfoService.OnScroll += OnScroll;
+    }
+
+    private void OnScroll(object sender, int yValue)
+    {
+        DoSomething(yValue);
+    }
+
+    public void Dispose()
+    {
+        scrollInfoService.OnScroll -= OnScroll;
+    }
+
+    private void DoSomething(int yValue)
+    {
+        gibScroll = yValue.ToString();
+        MyInteger =  yValue;
+        StateHasChanged();
+    }
+
+    @* ================ *@
+
+    public int MyInteger { get; set; } = 0;
+
+    private string GetColor()
+    {
+        switch (MyInteger)
+        {
+            case 0:
+            return "red";
+            case 90:
+            return "green";
+            case 125:
+            return "blue";
+            default:
+            return "white";
+        }
+    }
+
+}
