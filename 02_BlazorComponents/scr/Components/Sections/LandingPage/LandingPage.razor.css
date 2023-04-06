@@ -1,0 +1,9 @@
+.container-landingpage {
+    background-image: url('/images/desktop/backgrounds/desktop_bg_welcome.jpg');
+    background-position: center top;
+    background-size: cover;
+    height: 1000px;
+    margin: auto;
+    max-width: 100%;
+    padding-top: 10rem;
+  }

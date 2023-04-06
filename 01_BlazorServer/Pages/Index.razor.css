@@ -1,38 +1,4 @@
-.index-background {
-  background-image: url('/images/test.jpg');
-  background-attachment: fixed;
-  background-size: cover;
-  height: 1000px;
-  }
 
-.container-welcome {
-  background-image: url('/images/desktop/backgrounds/desktop_bg_welcome.jpg');
-  background-position: center top;
-  background-size: cover;
-  height: 1000px;
-  margin: auto;
-  max-width: 100%;
-  padding-top: 10rem;
-}
-
-.container-services {
-  background-image: url('/images/desktop/backgrounds/desktop_bg_main_right.jpg');
-  background-attachment: fixed;
-  /* background-position: center right; */
-  background-size: cover;
-  margin: auto;
-  height: 1000px;
-  max-width: 100%;
-  padding-top: 10rem;
-}
-
-.my-spacing-10 {
-  margin-top: 10rem;
-}
-
-.my-spacing-5 {
-  margin-top: 5rem;
-}
 
 
 

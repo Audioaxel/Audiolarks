@@ -1,84 +1,23 @@
 ﻿@using BlazorComponents.Components.AudioPlayer
+@using BlazorComponents.Components.LandingPage
+@using BlazorComponents.Components.Services
+@using BlazorComponents.Components.Portfolio
 
 @page "/"
 
 <PageTitle>Home</PageTitle>
 
 
-<div class="index-background">
+<div>
 
-@* === Welcome ================================================== *@
-  <div class="container-fluid container-welcome">
-    <div class="row">
-      <div class="col-sm">
-        One of three columns
-      </div>
-      <div class="col-sm">
-        One of three columns
-      </div>
-      <div class="col-sm">
-        One of three columns
-      </div>
-    </div>
-  </div>
+  <LandingPage></LandingPage>
 
-@* === Services ================================================== *@
-
-  <div class="container container-services">
-    <div class="row">
-      
-      <div class="col-sm d-flex">
-        <div class="container">
-            <h3 class="text-center">Test</h3>
-            <h3 class="text-center">Mit Kot</h3>
-            <h3 class="text-center">Auf Brot</h3>
-        </div>
-      </div>
-      
-      <div class="col-sm d-flex">
-        <div class="container align-items-center justify-content-center">
-            <h3 class="text-center">Test</h3>
-            <h3 class="text-center">Mit Kot</h3>
-            <h3 class="text-center">Auf Brot</h3>
-        </div>
-      </div>
-
-      <div class="col-sm d-flex">
-        <div class="container align-items-center justify-content-center">
-            <h3 class="text-center">Test</h3>
-            <h3 class="text-center">Mit Kot</h3>
-            <h3 class="text-center">Auf Brot</h3>
-        </div>
-      </div>
-
-      <div class="my-spacing-5"></div>
-    </div>
-  </div>
-
-  @* <h1>Hello, world! test</h1>
-
-  Welcome to your new app.
-
-  <SurveyPrompt Title="How is Blazor working for you?" /> *@
+  <Services></Services>
 
 
-<AudioPlayer></AudioPlayer>
+  @* === Widgets ============================================= *@
+
+  <AudioPlayer></AudioPlayer>
 
 </div>
-
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Toggle bottom offcanvas</button>
-
-<div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body small">
-    ...
-  </div>
-</div>
-
-@code{
-
-}
 
