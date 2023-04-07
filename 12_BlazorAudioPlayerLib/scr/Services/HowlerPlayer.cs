@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using BlazorAudioPlayerLib.Interop;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
 namespace BlazorAudioPlayerLib.Services;
@@ -34,4 +35,19 @@ internal class HowlerPlayer : AudioJsInterop, IAudioPlayer
         var module = await moduleTask.Value;
         await module.InvokeVoidAsync("playClick", audioFile);
     }
+
+    // === Video STuff ================================
+    public async Task OnVideoPlay()
+    {
+        var module = await moduleTask.Value;
+        await module.InvokeVoidAsync("onVideoPlay");
+    }
+
+    public async Task PauseVideo(string id)
+    {
+        var module = await moduleTask.Value;
+        await module.InvokeVoidAsync("pauseVideo", id);
+
+    }
+
 }

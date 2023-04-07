@@ -66,7 +66,16 @@ export function pauseMusic()
     }
 }
 
+// === Video Stuff ====================
+export function onVideoPlay()
+{
+    pauseMusic();
+}
 
+export function pauseVideo(id) {
+    var video = document.getElementById(id);
+    video.pause();
+}
 
 //export function playMusic(audioFile)
 //{

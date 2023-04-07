@@ -24,17 +24,9 @@
       <div class="modal-body">
 
 
-        @* Wie Video:/ *@
-        <video class="w-100" controls>
-          <source src="videos/aoi_soundImplementation.mp4" type="video/mp4">
-          Your browser does not support HTML5 video.
-        </video>
-
-
-        <video class="w-100" controls @onplay="OnPlay">
-          <source src="videos/aoi_soundImplementation.mp4" type="video/mp4">
-          Your browser does not support HTML5 video.
-        </video>
+        <VideoPlayer Class="w-100" 
+          VideoPath="videos/aoi_soundImplementation.mp4">
+        </VideoPlayer>
 
         <div class="ratio ratio-16x9">
           <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9l8baG-X-nk" 
@@ -67,6 +59,7 @@
   {
       _dotNetObjectReference = DotNetObjectReference.Create(this);
   }
+
 
   [JSInvokableAttribute("OnVideoPlay")]
   public async Task OnVideoPlay()

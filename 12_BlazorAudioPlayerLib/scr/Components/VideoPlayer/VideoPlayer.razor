@@ -1,0 +1,64 @@
+@inject IAudioPlayer player
+@inject IJSRuntime jsRuntime
+
+<h3>Video Player is da</h3>
+
+@if (string.IsNullOrEmpty(VideoPath))
+{
+  <h3>Video not found! Pls enter a valid path</h3>
+}
+else
+{
+  <video controls class="@Class"
+    id=@_elementId
+    @ref="_reference"
+    @onplay="OnVideoPlay" 
+    @onstop="OnVideoStop">
+      <source src=@VideoPath type="video/mp4">
+      Your browser does not support HTML5 video.
+  </video>
+}
+
+
+<button @onclick="PauseVideo" >Pause</button>
+
+<h3>@_reference.Id</h3>
+
+
+
+@code {
+
+  private bool _isPlaying = false;
+  private ElementReference _reference;
+  private string _elementId = "default";
+
+  [Parameter]
+  public string? Class { get; set; } = string.Empty;
+
+  [Parameter]
+  public string? VideoPath { get; set; }
+
+
+  public async Task PauseVideo()
+  {
+    if (_isPlaying)
+    {
+      await player.PauseVideo(_elementId);
+      await OnVideoStop();
+    }
+  }
+
+  private async Task OnVideoPlay()
+  {
+    _elementId = _reference.Id;
+    await player.OnVideoPlay();
+    _isPlaying = true;
+  }
+
+  private async Task OnVideoStop()
+  {
+    await player.PlayMusic("music/IjomaTrack01.mp3");
+    _isPlaying = false;
+  }
+
+}
