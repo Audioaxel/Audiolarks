@@ -39,3 +39,17 @@ window.onscroll = function() {
 window.RegisterScrollInfoService = (scrollInfoService) => {
     window.scrollInfoService = scrollInfoService;
 }
+
+// === Video Callback =========================
+function videoPlayCallback(dotnetInstance) {
+    dotnetInstance.invokeMethodAsync('OnVideoPlay');
+  }
+
+function onModalClose(dotnetInstance) {
+    dotnetInstance.invokeMethodAsync('ModalClose');  
+}
+
+var myModalEl = document.getElementById('myModal')
+myModalEl.addEventListener('hidden.bs.modal', function (event) {
+  // do something...
+})

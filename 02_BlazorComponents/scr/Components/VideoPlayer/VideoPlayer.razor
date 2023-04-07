@@ -1,0 +1,70 @@
+@inject IJSRuntime jsRuntime
+
+<h3>Vid is da</h3>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+        @* Wie Video:/ *@
+        <video class="w-100" controls>
+          <source src="videos/aoi_soundImplementation.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+
+
+        <video class="w-100" controls @onplay="OnPlay">
+          <source src="videos/aoi_soundImplementation.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+
+        <div class="ratio ratio-16x9">
+          <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9l8baG-X-nk" 
+            title="YouTube video player" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3>@test</h3>
+
+
+@code {
+
+  private string test = "nix geil man";
+
+  [JSInvokableAttribute("OnVideoPlay")]
+  public async Task OnVideoPlay()
+  {
+    test = "geil man";
+    await InvokeAsync(StateHasChanged);
+  }
+
+  private async Task OnPlay()
+  {
+    await jsRuntime.InvokeVoidAsync("videoPlayCallback", DotNetObjectReference.Create(this));
+  }
+}
