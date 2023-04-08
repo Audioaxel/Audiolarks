@@ -1,11 +1,5 @@
-@page "/test2"
-
-
-<h3 class="mt-5">Test yout Shit twice</h3>
-
 @inject IJSRuntime jsRuntime
-
-<h3>Vid is da</h3>
+@inherits VideoPlayer
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -14,7 +8,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-  hide.bs.modal="createAlert">
+  hide.bs.modal="onModalClose()">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -23,20 +17,9 @@
       </div>
       <div class="modal-body">
 
-
         <VideoPlayer Class="w-100" 
           VideoPath="videos/aoi_soundImplementation.mp4">
         </VideoPlayer>
-
-        <div class="ratio ratio-16x9">
-          <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9l8baG-X-nk" 
-            title="YouTube video player" frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-          </iframe>
-        </div>
-
-
 
       </div>
       <div class="modal-footer">
@@ -47,32 +30,12 @@
   </div>
 </div>
 
-
 <h3>Create Alert</h3>
 <button class="btn btn-success" @onclick="ShowAlert">Show Alert</button>
 
-
 @code {
-
     async Task ShowAlert()
     {
         await this.jsRuntime.InvokeVoidAsync("createAlert");
-        await this.jsRuntime.InvokeVoidAsync("modalTest");
     }
-
-
-    protected override void OnInitialized()
-    {
-        jsRuntime.InvokeVoidAsync("registerModalEvent", "exampleModal");
-    }
-
-
-
-    [JSInvokable("modalHidden")]
-    public async Task OnModalHidden()
-    {
-        await this.jsRuntime.InvokeVoidAsync("createAlert");
-    }
-
-
 }

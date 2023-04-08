@@ -1,5 +1,9 @@
 function createAlert() {
     alert("alaaaarm");
+    var myModalEl = document.getElementById('exampleModal')
+    myModalEl.addEventListener('hidden.bs.modal', function (event) {
+        console.log('Das Modal-Element wurde ausgeblendet.');
+    })
 }
 
 function createPrompt(text) {
@@ -45,12 +49,17 @@ function videoPlayCallback(dotnetInstance) {
     dotnetInstance.invokeMethodAsync('OnVideoPlay');
   }
 
+// brauch ich die???
 function onModalClose(dotnetInstance) {
     dotnetInstance.invokeMethodAsync('ModalClose');  
 }
 
-var myModalEl = document.getElementById('myModal')
-myModalEl.addEventListener('hidden.bs.modal', function (event) {
-  // do something...
-})
+// Modal
+function modalTest() {
+    var myModalEl = document.getElementById('exampleModal')
+    myModalEl.addEventListener('hidden.bs.modal', function (event) {
+        console.log('Das Modal-Element wurde ausgeblendet.');
+    })
+}
+
 
