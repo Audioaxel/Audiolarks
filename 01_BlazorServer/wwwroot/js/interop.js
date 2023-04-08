@@ -1,9 +1,9 @@
 function createAlert() {
     alert("alaaaarm");
-    var myModalEl = document.getElementById('exampleModal')
-    myModalEl.addEventListener('hidden.bs.modal', function (event) {
-        console.log('Das Modal-Element wurde ausgeblendet.');
-    })
+    // var myModalEl = document.getElementById('exampleModal')
+    // myModalEl.addEventListener('hidden.bs.modal', function (event) {
+    //     console.log('Das Modal-Element wurde ausgeblendet.');
+    // })
 }
 
 function createPrompt(text) {
