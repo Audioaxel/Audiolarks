@@ -1,14 +1,15 @@
 @inject IJSRuntime jsRuntime
-@inherits VideoPlayer
+
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" 
+  data-bs-target="#exampleModal"
+  @onclick="OpenModal" >
+    Launch demo modal
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-  hide.bs.modal="onModalClose()">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -17,7 +18,7 @@
       </div>
       <div class="modal-body">
 
-        <VideoPlayer Class="w-100" 
+        <VideoPlayer @ref=_videoPlayerRef PlayerClass="w-100"
           VideoPath="videos/aoi_soundImplementation.mp4">
         </VideoPlayer>
 
@@ -30,12 +31,30 @@
   </div>
 </div>
 
-<h3>Create Alert</h3>
-<button class="btn btn-success" @onclick="ShowAlert">Show Alert</button>
-
 @code {
-    async Task ShowAlert()
+
+    private VideoPlayer _videoPlayerRef;
+    
+    private async Task OpenModal()                // Kp ey check hier mal wann wie was subscribed.
     {
-        await this.jsRuntime.InvokeVoidAsync("createAlert");
+        await this.jsRuntime.InvokeVoidAsync("subscribeCloseModal", "exampleModal", 
+            DotNetObjectReference.Create(this)
+        );
+
+        if (!string.IsNullOrEmpty(_videoPlayerRef.VideoPlayerRef.Id))
+        {
+            await jsRuntime.InvokeVoidAsync("autoPlayVideo", _videoPlayerRef.VideoPlayerRef.Id);
+        }
     }
+
+    [JSInvokable]
+    public async Task StopVideo()
+    {
+        await jsRuntime.InvokeVoidAsync("autoStopVideo", _videoPlayerRef.VideoPlayerRef.Id);
+    }
+
+
+
 }
+
+

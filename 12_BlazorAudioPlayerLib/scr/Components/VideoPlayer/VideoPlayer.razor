@@ -1,7 +1,7 @@
 @inject IAudioPlayer player
 @inject IJSRuntime jsRuntime
+@inject IVideoPlayerNotify _videoPlayerNotify
 
-<h3>Video Player is da</h3>
 
 @if (string.IsNullOrEmpty(VideoPath))
 {
@@ -9,56 +9,57 @@
 }
 else
 {
-  <video controls class="@Class"
-    id=@_elementId
-    @ref="_reference"
+  <video controls class="@PlayerClass"
+    id=@VideoPlayerRef.Id
+    @ref="VideoPlayerRef"
     @onplay="OnVideoPlay" 
-    @onstop="OnVideoStop">
+    @onstop="OnVideoPause"
+    @onpause="OnVideoPause">
       <source src=@VideoPath type="video/mp4">
       Your browser does not support HTML5 video.
   </video>
 }
 
-
-<button @onclick="PauseVideo" >Pause</button>
-
-<h3>@_reference.Id</h3>
-
-
-
 @code {
 
   private bool _isPlaying = false;
-  private ElementReference _reference;
-  private string _elementId = "default";
+
+  public ElementReference VideoPlayerRef { get; private set; }
 
   [Parameter]
-  public string? Class { get; set; } = string.Empty;
+  public string? PlayerClass { get; set; } = string.Empty;
 
   [Parameter]
   public string? VideoPath { get; set; }
 
 
-  public async Task PauseVideo()
+  protected override async Task OnAfterRenderAsync(bool firstRender)
+  {
+      base.OnAfterRender(firstRender);
+
+      if (firstRender)
+      {
+          StateHasChanged();
+      }
+  }
+
+  private void OnVideoPlay()
+  {
+    _isPlaying = true;
+
+    _videoPlayerNotify.VideoStarted();
+  }
+  
+  private void OnVideoPause()
   {
     if (_isPlaying)
     {
-      await player.PauseVideo(_elementId);
-      await OnVideoStop();
+        _isPlaying = false;
+
+        _videoPlayerNotify.VideoStopped();
     }
   }
-
-  private async Task OnVideoPlay()
-  {
-    _elementId = _reference.Id;
-    await player.OnVideoPlay();
-    _isPlaying = true;
-  }
-
-  private async Task OnVideoStop()
-  {
-    await player.PlayMusic("music/IjomaTrack01.mp3");
-    _isPlaying = false;
-  }
-
 }
+
+
+

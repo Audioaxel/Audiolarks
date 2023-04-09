@@ -1,9 +1,5 @@
 function createAlert() {
     alert("alaaaarm");
-    // var myModalEl = document.getElementById('exampleModal')
-    // myModalEl.addEventListener('hidden.bs.modal', function (event) {
-    //     console.log('Das Modal-Element wurde ausgeblendet.');
-    // })
 }
 
 function createPrompt(text) {
@@ -49,17 +45,36 @@ function videoPlayCallback(dotnetInstance) {
     dotnetInstance.invokeMethodAsync('OnVideoPlay');
   }
 
-// brauch ich die???
-function onModalClose(dotnetInstance) {
-    dotnetInstance.invokeMethodAsync('ModalClose');  
+
+// ===================================================== 
+/// Modal
+
+function subscribeCloseModal(elementId, dotnetInstance) {
+    myModalEl = document.getElementById(elementId);
+  
+    // Die benannte Funktion `handleModalHidden` als Event-Listener registrieren
+    myModalEl.addEventListener('hidden.bs.modal', handleModalHidden);
+  
+    function handleModalHidden(event) {
+      console.log('Das Modal-Element wurde ausgeblendet.');
+      dotnetInstance.invokeMethodAsync('StopVideo');
+      myModalEl.removeEventListener('hidden.bs.modal', handleModalHidden);
+    }
+  }
+
+
+function autoPlayVideo(elementId) {
+    var videoElement = document.getElementById(elementId);
+    
+    if (videoElement != null)
+        videoElement.play();
+}
+function autoStopVideo(elementId) {
+    var videoElement = document.getElementById(elementId);
+    
+    if (videoElement != null)
+        videoElement.pause();
 }
 
-// Modal
-function modalTest() {
-    var myModalEl = document.getElementById('exampleModal')
-    myModalEl.addEventListener('hidden.bs.modal', function (event) {
-        console.log('Das Modal-Element wurde ausgeblendet.');
-    })
-}
 
 
