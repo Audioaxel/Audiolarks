@@ -1,0 +1,45 @@
+@inherits AudioPlayerBase
+
+
+@if (soundtracks.Count <= 0)
+{
+  <p>Loading Tracks...</p>
+}
+else
+{
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Tag
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var soundtrack in soundtracks)
+      {
+        <tr>
+          <td>
+            @soundtrack.Name
+          </td>
+          <td>
+            @soundtrack.MusicalTags
+          </td>
+          <td>
+            <a class="btn btn-sm btn-secondary"
+              @onclick="@((args) => PlaySoundtrack(soundtrack))">
+              Play
+            </a>
+            <a class="btn btn-sm btn-danger" 
+              @onclick="@((args) => StopSoundtrack(soundtrack))">
+              Stop
+            </a>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}
