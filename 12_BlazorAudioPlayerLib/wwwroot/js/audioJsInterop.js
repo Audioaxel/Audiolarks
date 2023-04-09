@@ -77,40 +77,6 @@ export function resumeMusic() {
     }
 }
 
-//export function playMusic(audioFile)
-//{
-//    if (music == null) {
-//        music = new Howl({
-//            src: [audioFile],
-//            //onfade: () => {
-//            //    stopId();
-//            //}
-//        });
-//        music.play();
-//    } else if (music.playing()) {
-//        stopMusic();
-//    } else {
-//        music.play(audioFile);
-//    }
-//}
-
-//export function stopMusic() {
-//    if (music.playing()) {
-//        var id = music.fade(1, 0, 5000);
-//        music.on('fade', () => {
-//            stopId(id);
-//        });
-//    }
-//}
-
-//function stopId(id) {
-//    music.stopMusic(id);
-//    console.log('kot');
-//}
-
-
-
-
 // --- Sfx ---
 
 var hover;
