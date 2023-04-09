@@ -5,7 +5,7 @@
   
     background: linear-gradient(to bottom, var(--my-main-color-rgb), rgba(0,0,0,0));
     transition: all 0.5s;
-    opacity: 0.5;
+    opacity: 1;
   }
 
 /* DICKES FUNZT NET */

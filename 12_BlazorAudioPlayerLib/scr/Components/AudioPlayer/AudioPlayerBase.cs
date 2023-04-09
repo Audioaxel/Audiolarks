@@ -64,12 +64,16 @@ public class AudioPlayerBase : ComponentBase, IDisposable
         await AudioPlayer.StopMusic(soundtrack.FilePath);
     }
 
-    // NEEED PAUSEEEE
+    protected async Task PauseSoundtrack()
+    {
+        await AudioPlayer.PauseMusic();
+    }
+
     private async Task OnVideoPlayHandle()
     {
         if (CurrentSoundtrack is not null)
         {
-            await StopSoundtrack(CurrentSoundtrack);
+            await AudioPlayer.PauseMusic();
         }
     }
 
@@ -77,7 +81,7 @@ public class AudioPlayerBase : ComponentBase, IDisposable
     {
         if (CurrentSoundtrack is not null)
         {
-            await PlaySoundtrack(CurrentSoundtrack);
+            await AudioPlayer.ResumeMusic();
         }
     }
 

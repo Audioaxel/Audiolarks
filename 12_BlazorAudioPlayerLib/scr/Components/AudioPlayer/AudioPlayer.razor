@@ -7,39 +7,49 @@
 }
 else
 {
-  <table class="table">
-    <thead>
-      <tr>
-        <th>
-          Name
-        </th>
-        <th>
-          Tag
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach (var soundtrack in soundtracks)
-      {
+  <div class="scrollable">
+    <table class="table table-borderless table-hover table-responsive table-sm" >
+      <thead>
         <tr>
-          <td>
-            @soundtrack.Name
-          </td>
-          <td>
-            @soundtrack.MusicalTags
-          </td>
-          <td>
-            <a class="btn btn-sm btn-secondary"
-              @onclick="@((args) => PlaySoundtrack(soundtrack))">
-              Play
-            </a>
-            <a class="btn btn-sm btn-danger" 
-              @onclick="@((args) => StopSoundtrack(soundtrack))">
-              Stop
-            </a>
-          </td>
+          <th>
+            Img
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            Tag
+          </th>
         </tr>
-      }
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        @foreach (var soundtrack in soundtracks)
+        {
+          <tr>
+            <td>
+              <img src=@soundtrack.ThumbnailPath 
+                class="img-fluid w-25"
+              >
+            </td>
+            <td>
+              @soundtrack.Name
+            </td>
+            <td>
+              @soundtrack.MusicalTags
+            </td>
+            <td>
+              <a class="btn btn-sm btn-secondary"
+                @onclick="@((args) => PlaySoundtrack(soundtrack))">
+                Play
+              </a>
+              <a class="btn btn-sm btn-danger" 
+                @onclick="@((args) => StopSoundtrack(soundtrack))">
+                Stop
+              </a>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 }

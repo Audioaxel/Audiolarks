@@ -31,6 +31,22 @@ internal class HowlerPlayer : AudioJsInterop, IAudioPlayer
 
         _notify.MusicStopped();
     }
+
+    public async Task PauseMusic()
+    {
+        var module = await moduleTask.Value;
+        await module.InvokeVoidAsync("pauseMusic");
+    }
+
+    public async Task ResumeMusic()
+    {
+        var module = await moduleTask.Value;
+        await module.InvokeVoidAsync("resumeMusic");
+    }
+
+
+
+    // Sfx
     public async Task PlayHover(string audioFile)
     {
         var module = await moduleTask.Value;

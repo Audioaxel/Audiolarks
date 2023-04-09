@@ -153,6 +153,12 @@ a, .btn-link {
   }
 
 
+/* === MISC ========================================================00 */
+.scrollable {
+  overflow-y: auto;
+  max-height: 300px;
+}
+
   
   
   

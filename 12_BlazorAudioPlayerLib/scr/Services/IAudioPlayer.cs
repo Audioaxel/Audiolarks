@@ -9,4 +9,6 @@ public interface IAudioPlayer
     Task PlayHover(string audioFile);
     Task PlayMusic(string audioFile);
     Task StopMusic(string audioFile);
+    Task PauseMusic();
+    Task ResumeMusic();
 }

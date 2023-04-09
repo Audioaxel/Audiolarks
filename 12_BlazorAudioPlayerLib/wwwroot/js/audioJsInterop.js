@@ -57,11 +57,22 @@ function disposeMusic()
     disposeMusicList().shift();
 }
 
+
 export function pauseMusic()
 {
     if (music != null) {
         if (music.playing()) {
-            music.pause()
+            music.once('fade', () => { music.pause(); });
+            music.fade(music.volume(), 0, 2000);
+        }
+    }
+}
+
+export function resumeMusic() {
+    if (music != null) {
+        if (!music.playing()) {
+            music.play();
+            music.fade(0, 1, 2000);
         }
     }
 }
