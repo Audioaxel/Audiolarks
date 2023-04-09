@@ -21,8 +21,20 @@ public class AudioPlayerBase : ComponentBase, IDisposable
         },
         new Soundtrack {
             Id = 002,
-            Name = "IjomaTrack02",
-            FilePath = "music/IjomaTrack01.mp3",
+            Name = "AdventureTrack",
+            FilePath = "music/Adventure.mp3",
+            ThumbnailPath ="images/thumbnails/test2.jpg"
+        },
+        new Soundtrack {
+            Id = 003,
+            Name = "ElectroTrack",
+            FilePath = "music/Electro.mp3",
+            ThumbnailPath ="images/thumbnails/test1.jpg"
+        },
+        new Soundtrack {
+            Id = 004,
+            Name = "TechnoTrack",
+            FilePath = "music/Techno.mp3",
             ThumbnailPath ="images/thumbnails/test2.jpg"
         }
     };

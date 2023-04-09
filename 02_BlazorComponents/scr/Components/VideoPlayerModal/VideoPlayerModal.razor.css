@@ -1,0 +1,25 @@
+.button-img {
+    background-image: url('/images/desktop/CoverTest.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    width: 30vw;
+    height: 30vw;
+  }
+
+  .round-button {
+    position: fixed;
+    bottom: 5vh;
+    right: 5vw;
+    z-index: 9998;
+  
+    background-color: #592741;
+    color: #fff;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in-out;
+  }
