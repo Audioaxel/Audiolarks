@@ -1,6 +1,6 @@
-@inject IAudioPlayer audioPlayer
-@inject IVideoPlayerNotify _videoPlayerNotify
-@implements IAsyncDisposable
+@inherits AudioPlayerBase
+
+
 
 <h3>bin da audiopülayer</h3>
 
@@ -27,30 +27,5 @@
 </div>
 
 
-@code {
 
-  protected override void OnInitialized()
-  {
-      base.OnInitialized();
-      _videoPlayerNotify.OnVideoPlayAsync += Stop;
-      _videoPlayerNotify.OnVideoStopAsync += Play;
-  }
-
-  private async Task Play()
-  {
-    await audioPlayer.PlayMusic("music/IjomaTrack01.mp3");
-  }
-
-  private async Task Stop()
-  {
-    await audioPlayer.StopMusic("music/IjomaTrack01.mp3");
-  }
-
-  public async ValueTask DisposeAsync()
-  {
-      _videoPlayerNotify.OnVideoPlayAsync -= Stop;
-      _videoPlayerNotify.OnVideoStopAsync -= Play;
-  }
-
-}
 
